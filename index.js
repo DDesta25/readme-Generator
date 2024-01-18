@@ -3,9 +3,10 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
 const { listenerCount } = require("process");
+const { right } = require("inquirer/lib/utils/readline");
 
 // TODO: Create an array of questions for user input
-// title of project and discription and table of contents and installations and usage and contributing and tests and questions.
+// title of project and description and table of contents and installations and usage and contributing and tests and questions.
 // type:list and type: input
 const questions = [
     
@@ -27,10 +28,10 @@ const questions = [
     name: "title",
     message: "name of title of the project?",
   },
-  // discription of the project
+  // description of the project
   {
     type: "input",
-    name: "projectDiscription",
+    name: "projectDescription",
     message: "describe the project",
   },
   // choose from license list
@@ -58,16 +59,18 @@ const questions = [
     name: "infoUsage",
     message: "how do you use the app?",
   },
-  // contrabution info
+  // contribution info
   {
     type: "input",
-    name: "contrabuterInfo",
-    message: "type the name of the contrabuters for this project",
+    name: "contributorInfo",
+    message: "type the name of the contributors for this project",
   },
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+  // need to preform an fs write file
+}
 
 // TODO: Create a function to initialize app
 function init() {
@@ -79,6 +82,7 @@ function init() {
     .then((answers) => {
         console.log(answers);
       // Use user feedback for... whatever!!
+      writeToFile("generatedreadme.md", generateMarkdown(answers))
     })
     .catch((error) => {
       if (error.isTtyError) {
