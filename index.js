@@ -9,7 +9,6 @@ const { right } = require("inquirer/lib/utils/readline");
 // title of project and description and table of contents and installations and usage and contributing and tests and questions.
 // type:list and type: input
 const questions = [
-    
   // users github user name
   {
     type: "input",
@@ -39,7 +38,7 @@ const questions = [
     type: "list",
     name: "licenseList",
     message: "choose a license list",
-    choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None'],
+    choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "None"],
   },
   // installation instructions
   {
@@ -69,20 +68,22 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
+  
   // need to preform an fs write file
+  return fs.writeFileSync(fileName, data);
 }
 
 // TODO: Create a function to initialize app
 function init() {
-    inquirer
+  inquirer
     .prompt(
       /* Pass your questions in here */
       questions
     )
     .then((answers) => {
-        console.log(answers);
+      console.log(answers);
       // Use user feedback for... whatever!!
-      writeToFile("generatedreadme.md", generateMarkdown(answers))
+      writeToFile("generatedreadme.md", generateMarkdown({...answers}));
     })
     .catch((error) => {
       if (error.isTtyError) {

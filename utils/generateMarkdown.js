@@ -30,7 +30,7 @@ function renderLicenseLink(license) {
     return `[http://www.apache.org/licenses/](http://www.apache.org/licenses/)`;
   }
   if (license == "MIT") {
-    return `[https://choosealicense.com/licenses/mit/](https://choosealicense.com/licenses/mit/)`;
+    return `[https://choosealicense.com/licenses/mit/](https://choosealicense.com/licenses/mit/)`; 
   }
   if (license == "GPL 3.0") {
     return`[https://fsf.org/](https://fsf.org/)`
